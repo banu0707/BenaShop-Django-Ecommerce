@@ -1,0 +1,48 @@
+{% extends "store/base.html" %}
+
+{% block title %}
+Order Successful
+{% endblock %}
+
+
+{% block content %}
+
+<div class="container text-center mt-5">
+
+    <div class="success-icon">
+        ✓
+    </div>
+
+    <h1>
+        Order Placed Successfully! 🎉
+    </h1>
+
+    <p>
+        Thank you for shopping with BenaShop.
+    </p>
+
+    <h4>
+        Order ID: #{{ order.id }}
+    </h4>
+
+    <p>
+        Total: ₹{{ order.total_amount }}
+    </p>
+
+
+    <a
+        href="{% url 'orders' %}"
+        class="btn btn-danger">
+        View My Orders
+    </a>
+
+
+    <a
+        href="{% url 'products' %}"
+        class="btn btn-outline-dark">
+        Continue Shopping
+    </a>
+
+</div>
+
+{% endblock %}

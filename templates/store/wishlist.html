@@ -1,0 +1,72 @@
+{% extends "store/base.html" %}
+
+{% block title %}
+Wishlist
+{% endblock %}
+
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <h1>
+        ❤️ My Wishlist
+    </h1>
+
+
+    <div class="row mt-4">
+
+        {% for item in items %}
+
+        <div class="col-md-3 mb-4">
+
+            <div class="card">
+
+                <img
+                    src="{{ item.product.image.url }}"
+                    class="card-img-top product-image">
+
+
+                <div class="card-body">
+
+                    <h5>
+                        {{ item.product.name }}
+                    </h5>
+
+                    <p>
+                        ₹{{ item.product.price }}
+                    </p>
+
+
+                    <a
+                        href="{% url 'add_to_cart' item.product.id %}"
+                        class="btn btn-danger">
+                        Add to Cart
+                    </a>
+
+
+                    <a
+                        href="{% url 'remove_wishlist' item.id %}"
+                        class="btn btn-outline-danger">
+                        Remove
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        {% empty %}
+
+        <h4>
+            Your wishlist is empty.
+        </h4>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+{% endblock %}

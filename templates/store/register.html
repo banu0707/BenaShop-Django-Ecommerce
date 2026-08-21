@@ -1,0 +1,88 @@
+{% extends "store/base.html" %}
+
+{% block title %}
+Register
+{% endblock %}
+
+
+{% block content %}
+
+<div class="auth-container">
+
+    <div class="card p-4">
+
+        <h2 class="text-center">
+            Create Account
+        </h2>
+
+
+        {% if error %}
+
+        <div class="alert alert-danger">
+            {{ error }}
+        </div>
+
+        {% endif %}
+
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+
+            <label>
+                Username
+            </label>
+
+            <input
+                type="text"
+                name="username"
+                class="form-control mb-3"
+                required>
+
+
+            <label>
+                Email
+            </label>
+
+            <input
+                type="email"
+                name="email"
+                class="form-control mb-3"
+                required>
+
+
+            <label>
+                Password
+            </label>
+
+            <input
+                type="password"
+                name="password"
+                class="form-control mb-3"
+                required>
+
+
+            <button
+                class="btn btn-danger w-100">
+                Register
+            </button>
+
+        </form>
+
+
+        <p class="text-center mt-3">
+
+            Already have an account?
+
+            <a href="{% url 'login' %}">
+                Login
+            </a>
+
+        </p>
+
+    </div>
+
+</div>
+
+{% endblock %}

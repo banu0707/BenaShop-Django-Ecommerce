@@ -1,0 +1,78 @@
+{% extends "store/base.html" %}
+
+{% block title %}
+{{ product.name }}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <div class="row">
+
+        <div class="col-md-6">
+
+            <img
+                src="{{ product.image.url }}"
+                class="img-fluid product-detail-image">
+
+        </div>
+
+
+        <div class="col-md-6">
+
+            <h1>
+                {{ product.name }}
+            </h1>
+
+            <p>
+                ⭐ {{ product.rating }}
+            </p>
+
+            <h2 class="text-danger">
+                ₹{{ product.price }}
+            </h2>
+
+            {% if product.old_price %}
+
+            <del>
+                ₹{{ product.old_price }}
+            </del>
+
+            {% endif %}
+
+            <p class="mt-4">
+                {{ product.description }}
+            </p>
+
+            <p>
+                Stock:
+                <strong>
+                    {{ product.stock }}
+                </strong>
+            </p>
+
+            {% if product.stock > 0 %}
+
+            <a
+                href="{% url 'add_to_cart' product.id %}"
+                class="btn btn-danger btn-lg">
+                🛒 Add to Cart
+            </a>
+
+            {% endif %}
+
+            <a
+                href="{% url 'add_wishlist' product.id %}"
+                class="btn btn-outline-danger btn-lg">
+                ❤️ Wishlist
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
